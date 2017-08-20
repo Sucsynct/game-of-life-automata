@@ -38,18 +38,18 @@ Cell.prototype.detectNeighbours = function() {
   let inner = this.cellIndex.inner;
   //one row above
   if (!(outer === 0)) {
-    if (cells[outer-1][inner]) this.neighbours++;
-    if (cells[outer-1][inner-1]) this.neighbours++;
-    if (cells[outer-1][inner+1]) this.neighbours++;
+    if (cells[outer-1][inner] === 1) {this.neighbours++};
+    if (cells[outer-1][inner-1] === 1) {this.neighbours++};
+    if (cells[outer-1][inner+1] === 1) {this.neighbours++};
   }
   //current row
-  if (cells[outer][inner-1]) this.neighbours++;
-  if (cells[outer][inner+1]) this.neighbours++;
+  if (cells[outer][inner-1] === 1) {this.neighbours++};
+  if (cells[outer][inner+1] === 1) {this.neighbours++};
   //one row below
   if (!(outer === cells.length)) {
-    if (cells[outer+1][inner-1]) this.neighbours++;
-    if (cells[outer+1][inner]) this.neighbours++;
-    if (cells[outer+1][inner+1]) this.neighbours++;
+    if (cells[outer+1][inner-1] === 1) {this.neighbours++};
+    if (cells[outer+1][inner] === 1) {this.neighbours++};
+    if (cells[outer+1][inner+1] === 1) {this.neighbours++};
   }
 };
 
@@ -80,6 +80,10 @@ function drawGrid() {
     }
   }
 }
+
+setInterval(function() {
+  console.log(cells[0][0].state);
+}, 1000);
 
 function gameLoop() {
   ctx.clearRect(0, 0, width, height);
